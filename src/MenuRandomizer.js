@@ -16,6 +16,10 @@ const menuData = {
       { name: "ขนมถ้วย", price: 20, img: "https://i.imgur.com/WKq0X7b.jpg" },
       { name: "ลอดช่อง", price: 25, img: "https://i.imgur.com/N8qT3Kr.jpg" },
     ],
+    "7-11": [
+      { name: "ซูชิ", price: 45, img: "https://i.imgur.com/kOAqks3.jpg" },
+      { name: "ขนมปังไส้กรอก", price: 30, img: "https://i.imgur.com/x39b8vT.jpg" },
+    ],
   },
   กลางวัน: {
     ข้าว: [
@@ -31,6 +35,10 @@ const menuData = {
     "ของว่าง/หวาน": [
       { name: "โดนัท", price: 30, img: "https://i.imgur.com/kjAGv8Z.jpg" },
       { name: "ไอศกรีม", price: 35, img: "https://i.imgur.com/eu0dHdI.jpg" },
+    ],
+    "7-11": [
+      { name: "ข้าวกล่อง", price: 55, img: "https://i.imgur.com/cMS09JQ.jpg" },
+      { name: "บะหมี่กึ่งสำเร็จรูป", price: 20, img: "https://i.imgur.com/jgqY17B.jpg" },
     ],
   },
   เย็น: {
@@ -48,12 +56,12 @@ const menuData = {
       { name: "พายสับปะรด", price: 25, img: "https://i.imgur.com/JLUkQYy.jpg" },
       { name: "เยลลี่ผลไม้", price: 20, img: "https://i.imgur.com/yGOI9vY.jpg" },
     ],
+    "7-11": [
+      { name: "แซนวิชแฮมชีส", price: 40, img: "https://i.imgur.com/yXAnX3P.jpg" },
+      { name: "ซาลาเปา", price: 25, img: "https://i.imgur.com/0cLs5q6.jpg" },
+    ],
   },
 };
-
-function getRandomItemFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 export default function MenuRandomizer() {
   const [mealTime, setMealTime] = useState("");
@@ -91,7 +99,7 @@ export default function MenuRandomizer() {
     foodTypes.forEach((type) => {
       const list = menuData[mealTime][type];
       if (list && list.length > 0) {
-        const item = getRandomItemFromArray(list);
+        const item = list[Math.floor(Math.random() * list.length)];
         menusPicked.push(item);
         priceSum += item.price;
       }
@@ -113,7 +121,8 @@ export default function MenuRandomizer() {
     <div
       style={{
         minHeight: "100vh",
-        backgroundImage: "url('https://tse4.mm.bing.net/th/id/OIP.FWcGt56pvaUyb6cXCsvFMwHaDF?rs=1&pid=ImgDetMain&o=7&rm=3')",
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1470&q=80')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",
@@ -125,17 +134,17 @@ export default function MenuRandomizer() {
     >
       <div
         style={{
-          backgroundColor: "rgba(255, 255, 255, 0.9)",
+          backgroundColor: "rgba(255, 255, 255, 0.95)",
           borderRadius: "15px",
-          boxShadow: "0 8px 20px rgba(0,0,0,0.3)",
-          maxWidth: "480px",
+          boxShadow: "0 8px 25px rgba(0,0,0,0.2)",
+          maxWidth: "520px",
           width: "100%",
           padding: "30px",
           textAlign: "center",
         }}
       >
         <h2 style={{ marginBottom: "25px", color: "#333" }}>
-          สุ่มเมนูอาหาร (ไม่เผ็ด ไม่ผัก)
+          สุ่มเมนูอาหาร (ไม่เผ็ด ไม่ผัก) พร้อม 7-11
         </h2>
 
         <div style={{ marginBottom: "20px", fontSize: "18px" }}>
@@ -173,7 +182,7 @@ export default function MenuRandomizer() {
             marginBottom: "20px",
             textAlign: "left",
             fontSize: "18px",
-            maxWidth: "220px",
+            maxWidth: "240px",
             marginLeft: "auto",
             marginRight: "auto",
           }}
@@ -181,7 +190,7 @@ export default function MenuRandomizer() {
           <label style={{ marginBottom: "10px", display: "block" }}>
             เลือกประเภทอาหาร (เลือกได้หลายอย่าง):
           </label>
-          {["ข้าว", "เส้น", "อะไรก็ได้", "ของว่าง/หวาน"].map((type) => (
+          {["ข้าว", "เส้น", "อะไรก็ได้", "ของว่าง/หวาน", "7-11"].map((type) => (
             <label
               key={type}
               style={{
