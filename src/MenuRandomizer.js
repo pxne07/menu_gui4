@@ -113,7 +113,7 @@ export default function MenuRandomizer() {
     <div
       style={{
         minHeight: "100vh",
-        backgroundImage: "url('https://tse3.mm.bing.net/th/id/OIP.l_xHfzReJSkXW1I39XaVXAHaEK?rs=1&pid=ImgDetMain&o=7&rm=3')",
+        backgroundImage: "url('https://pin.it/7scIwGTfZ')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         display: "flex",
